@@ -21,6 +21,41 @@
     <h1>"Hello World, GTM + Google Sheets"</h1>
 
 </head>
+<head>
+    <!-- 
+      Upgrade analytics.js
+      ==> https://developers.google.com/analytics/devguides/collection/upgrade/analyticsjs?authuser=0 -->
+    <!-- Using old analytics.js snippet tracking code (i.e. ga() function)-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+        ga('create', 'UA-184637434-4', 'auto'); //just setup the tag in cookie
+        // ga('send', 'pageview'); //send the event data to GA
+        // Setting Custom dimensions & metrics
+        // (1) ==> https://support.google.com/analytics/answer/2709828
+        // Set value for custom dimension at index 3.
+        // ga('send', 'pageview', {
+        //   'dimension3':  'test2'
+        // });
+        // (2) ==> https://developers.google.com/analytics/solutions/data-import-user#top_of_page
+        // Set value for custom dimension at index 2.
+        // ga('require', 'displayfeatures');
+        // Send the custom dimension value with a pageview hit.
+        // ga('send', 'pageview', '/level_1/');
+        // ga('send', 'pageview');
+        
+        //Extract the clientID from user's browser cookie
+        ga(function(tracker) {
+          var clientId = tracker.get('clientId');
+          document.getElementById("clientId").innerHTML = clientId;
+        });
+  
+      </script>
+</head>
+
 
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -46,5 +81,11 @@
             .catch(error => console.error('Error!', error.message))
     })
 </script>
+
+<body onload="ga()">
+
+    <h1>"The clientId (analytics.js) is: " <span id="clientId"></span></h1>
+    <h1>"The clientId2 (gtag.js) is: " <span id="clientId2"></span></h1>
+</body>
 
 </html>
