@@ -45,7 +45,7 @@
         //Extract the clientID from user's browser cookie
         ga(function(tracker) {
             var clientId = tracker.get('clientId');
-            console.log(typeof clientId);
+            console.log(clientId);
             document.getElementById("clientId").innerHTML = clientId;
             document.submit_to_google_sheet.clientId.value = clientId;
         });
