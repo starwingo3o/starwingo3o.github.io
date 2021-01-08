@@ -46,7 +46,7 @@
         ga(function(tracker) {
             var clientId = tracker.get('clientId');
             document.getElementById("clientId").innerHTML = clientId;
-            // document.getElementById("clientId").value = clientId;
+            $('#demo_val').val(clientId);
         });
     </script>
 </head>
@@ -57,7 +57,7 @@
 
 <form name="submit-to-google-sheet">
     <input name="email" type="email" placeholder="Email" required>
-    <input name="clientId" type="hidden"> <span clientId="clientId"></span>
+    <input name="clientId" type="hidden" value="" id="demo_val">
     <button type="submit">Send</button>
 </form>
 <script>
