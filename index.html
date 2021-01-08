@@ -45,7 +45,6 @@
         //Extract the clientID from user's browser cookie
         ga(function(tracker) {
             var clientId = tracker.get('clientId');
-            console.log(clientId);
             document.getElementById("clientId").innerHTML = clientId;
             document.submit_to_google_sheet.clientId.value = clientId;
         });
@@ -65,7 +64,8 @@
     // const scriptURL = 'https://script.google.com/macros/s/AKfycbzhdAZqQmM9gyZjane5TOjJcaT-H3ZpAUePmHW5V2JzN89CZcM/exec'
     const scriptURL = 'https://script.google.com/macros/s/AKfycbykFcly9FnKUonSeO-Xem0rudmgFENCK7lsJRlq6nJXlV7eVUhKx1mo/exec'
     const form = document.forms['submit_to_google_sheet']
-    
+    console.log(clientId);
+
     form.addEventListener('submit', e => {
         e.preventDefault()
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
