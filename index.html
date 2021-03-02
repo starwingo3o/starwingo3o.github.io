@@ -1,97 +1,315 @@
+<!doctype html>
+<html lang="en">
 
-<html>
-    <!-- 
-        Google Sheets,
-        The tutorial:
-        https://github.com/jamiewilson/form-to-google-sheets
-    
-        This html code:
-        https://github.com/jamiewilson/form-to-google-sheets#6-input-your-web-app-url
-    
-     -->
-    
-    <head>
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-W56XRMP');</script>
-        <!-- End Google Tag Manager -->
-    
-        <h1>"Self-learning Remarketing test"</h1>
-    </head>
-    <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W56XRMP"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-    </body>
-    
-    
-    <head>
-        <!-- 
-          Upgrade analytics.js
-          ==> https://developers.google.com/analytics/devguides/collection/upgrade/analyticsjs?authuser=0 -->
-        <!-- Using old analytics.js snippet tracking code (i.e. ga() function)-->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-            ga('create', 'UA-184637434-4', 'auto'); //just setup the tag in cookie
-            // ga('send', 'pageview'); //send the event data to GA
-            
-            //Extract the clientID from user's browser cookie
-            ga(function(tracker) {
-                var clientId = tracker.get('clientId');
-                console.log(clientId)
-                console.log(typeof clientId)
-                document.getElementById("clientId").innerHTML = clientId;
-                document.submit_to_google_sheet.clientId.value = clientId;
-                console.log(document.submit_to_google_sheet.clientId.value)
-                console.log(typeof document.submit_to_google_sheet.clientId.value)
-            });
-        </script>
-    </head>
-    <body onload="ga()">
-        <h1>"GA clientId: " <span id="clientId"></span></h1>
-    </body>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- <p>
-    <span class='btn btn-primary'>I'm a span, styled like a button</span>
-    </p> -->
-    <p>
-    <button id="btn_xbox" type="button" class='vote_btn'>vote xbox button</button>
-    </p>
-    <p>
-    <button id="btn_steam" type="button" class='vote_btn'>vote steam button</button>
-    </p>
-    <p>
-    <button id="btn_playstation" type="button" class='vote_btn'>vote playstation button</button>
-    </p>
-    
-    <h3>Leave your email to stay contact!</h3>
-    <form name="submit_to_google_sheet">
-        <input name="email" type="email" placeholder="Email" required>
-        <input name="email" type="hidden" value="12211e2">
-        <input name="clientId" type="hidden" value="">
-        <button id="LoginIn" class="form_btn" type="submit">Send</button>
-    </form>
+  <!-- Bootstrap CSS -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Teko:400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,500i,700,700i|Teko&display=swap" rel="stylesheet">
 
-    <script>
-        // const scriptURL = 'https://script.google.com/macros/s/AKfycbzhdAZqQmM9gyZjane5TOjJcaT-H3ZpAUePmHW5V2JzN89CZcM/exec'
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbykFcly9FnKUonSeO-Xem0rudmgFENCK7lsJRlq6nJXlV7eVUhKx1mo/exec'
-        const form = document.forms['submit_to_google_sheet']
-        
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
-        })
-    </script>
-    
-    </html>
-    
+  <title>Hello, world!</title>
+  <style>
+    .footerlinks {
+      color: #ffffff;
+      text-decoration: none !important;
+    }
+
+    .footerlinks:hover {
+      color: #ffd800;
+    }
+    .winnertext{
+     
+      font-weight: 500;
+      font-size: 40px;
+      color: #4c27a3;
+    }
+    .winnerno{
+      background-color: #ffd800;
+      font-family: 'Teko', sans-serif;
+      font-weight: 600;
+      font-size: 75px;
+      border: 2px solid #fa9747;
+      border-radius: 10px;
+      margin-bottom: 0px;
+      color: #482cc2;
+    }
+    .btn{
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 25px;
+    }
+
+    #footer2 {
+      background: #272727;
+    }
+  </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col">
+            <img src="imgs/main-header1.jpg" style="width: 100%;" class="card-img-top img-fluid">
+        </div>
+      </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 mx-auto text-center">
+        <div class="card">
+          
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h1>50K Merch Giveaway Lucky Draw Contest</h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <hr />
+              </div>
+            </div>
+
+            <div class="row mx-auto">
+              <div class="col-2  mx-auto">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <img id="img1" src="imgs/user.png" width="150px" class="img-fluid p-1">
+                      </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col">
+                          <p class="winnertext" style="margin-bottom: 0px;">1st</p>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col">
+                        <hr>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col form-group input-group-lg">
+                          <h1 id="winnertext1"class="display-4 winnerno">0000</h1>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col form-group">
+                        <button id="btn1" type="button" class="btn btn-lg btn-block btn-success"
+                          onclick="fn(1)">Draw</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-2  mx-auto">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <img id="img2" src="imgs/user.png" width="150px" class="img-fluid p-1">
+                        </div>
+                      </div>
+                      <div class="row mt-1">
+                          <div class="col">
+                            <p class="winnertext" style="margin-bottom: 0px;">2nd</p>
+                          </div>
+                        </div>
+                      <div class="row">
+                        <div class="col">
+                          <hr>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col form-group input-group-lg">
+                            <h1 id="winnertext2"class="display-4 winnerno">0000</h1>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col form-group">
+                          <button id="btn2" type="button" class="btn btn-lg btn-block btn-success"
+                            onclick="fn(2)">Draw</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-2  mx-auto">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <img id="img3" src="imgs/user.png" width="150px" class="img-fluid p-1">
+                          </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col">
+                              <p class="winnertext" style="margin-bottom: 0px;">3rd</p>
+                            </div>
+                          </div>
+                        <div class="row">
+                          <div class="col">
+                            <hr>
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col form-group input-group-lg">
+                              <h1 id="winnertext3"class="display-4 winnerno">0000</h1>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col form-group">
+                            <button id="btn3" type="button" class="btn btn-lg btn-block btn-success"
+                              onclick="fn(3)">Draw</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-2  mx-auto">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col">
+                              <img id="img4" src="imgs/user.png" width="150px" class="img-fluid p-1">
+                            </div>
+                          </div>
+                          <div class="row mt-1">
+                              <div class="col">
+                                <p class="winnertext" style="margin-bottom: 0px;">4th</p>
+                              </div>
+                            </div>
+                          <div class="row">
+                            <div class="col">
+                              <hr>
+                            </div>
+                          </div>
+                          
+                          <div class="row">
+                            <div class="col form-group input-group-lg">
+                                <h1 id="winnertext4"class="display-4 winnerno">0000</h1>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col form-group">
+                              <button id="btn4" type="button" class="btn btn-lg btn-block btn-success"
+                                onclick="fn(4)">Draw</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-2  mx-auto">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <img id="img5" src="imgs/user.png" width="150px" class="img-fluid p-1">
+                              </div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col">
+                                  <p class="winnertext" style="margin-bottom: 0px;">5th</p>
+                                </div>
+                              </div>
+                            <div class="row">
+                              <div class="col">
+                                <hr>
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col form-group input-group-lg">
+                                  <h1 id="winnertext5"class="display-4 winnerno">0000</h1>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col form-group">
+                                <button id="btn5" type="button" class="btn btn-lg btn-block btn-success"
+                                  onclick="fn(5)">Draw</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>     
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+
+    <div id="footer2" class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center p-4">
+          <p class="lead" style="color:whitesmoke">&copy All right Reversed. <a class="footerlinks lead"
+              href="youtube.com/simplesnippets" target="_blank">Simple Snippets</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+  <script src="bootstrap/js/popper.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+
+  <script>
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function fn(textboxno) {
+      var x = getRandomInt(2, 43);
+      if(textboxno==1)
+      {
+        document.getElementById("winnertext1").innerHTML = x;
+        document.getElementById("img1").src="imgs/cup.png";
+      }
+      else if(textboxno==2)
+      {
+        document.getElementById("winnertext2").innerHTML = x;
+        document.getElementById("img2").src="imgs/cup.png";
+      }
+      else if(textboxno==3)
+      {
+        document.getElementById("winnertext3").innerHTML = x;
+        document.getElementById("img3").src="imgs/cup.png";
+      }
+      else if(textboxno==4)
+      {
+        document.getElementById("winnertext4").innerHTML = x;
+        document.getElementById("img4").src="imgs/cup.png";
+      }
+      else if(textboxno==5)
+      {
+        document.getElementById("winnertext5").innerHTML = x;
+        document.getElementById("img5").src="imgs/cup.png";
+      }
+      
+
+    }
+  </script>
+
+
+</body>
+
+</html>
