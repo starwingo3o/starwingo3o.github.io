@@ -1,0 +1,97 @@
+
+<html>
+    <!-- 
+        Google Sheets,
+        The tutorial:
+        https://github.com/jamiewilson/form-to-google-sheets
+    
+        This html code:
+        https://github.com/jamiewilson/form-to-google-sheets#6-input-your-web-app-url
+    
+     -->
+    
+    <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W56XRMP');</script>
+        <!-- End Google Tag Manager -->
+    
+        <h1>"Self-learning Remarketing test"</h1>
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W56XRMP"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    </body>
+    
+    
+    <head>
+        <!-- 
+          Upgrade analytics.js
+          ==> https://developers.google.com/analytics/devguides/collection/upgrade/analyticsjs?authuser=0 -->
+        <!-- Using old analytics.js snippet tracking code (i.e. ga() function)-->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+            ga('create', 'UA-184637434-4', 'auto'); //just setup the tag in cookie
+            // ga('send', 'pageview'); //send the event data to GA
+            
+            //Extract the clientID from user's browser cookie
+            ga(function(tracker) {
+                var clientId = tracker.get('clientId');
+                console.log(clientId)
+                console.log(typeof clientId)
+                document.getElementById("clientId").innerHTML = clientId;
+                document.submit_to_google_sheet.clientId.value = clientId;
+                console.log(document.submit_to_google_sheet.clientId.value)
+                console.log(typeof document.submit_to_google_sheet.clientId.value)
+            });
+        </script>
+    </head>
+    <body onload="ga()">
+        <h1>"GA clientId: " <span id="clientId"></span></h1>
+    </body>
+
+    <!-- <p>
+    <span class='btn btn-primary'>I'm a span, styled like a button</span>
+    </p> -->
+    <p>
+    <button id="btn_xbox" type="button" class='vote_btn'>vote xbox button</button>
+    </p>
+    <p>
+    <button id="btn_steam" type="button" class='vote_btn'>vote steam button</button>
+    </p>
+    <p>
+    <button id="btn_playstation" type="button" class='vote_btn'>vote playstation button</button>
+    </p>
+    
+    <h3>Leave your email to stay contact!</h3>
+    <form name="submit_to_google_sheet">
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="email" type="hidden" value="12211e2">
+        <input name="clientId" type="hidden" value="">
+        <button id="LoginIn" class="form_btn" type="submit">Send</button>
+    </form>
+
+    <script>
+        // const scriptURL = 'https://script.google.com/macros/s/AKfycbzhdAZqQmM9gyZjane5TOjJcaT-H3ZpAUePmHW5V2JzN89CZcM/exec'
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbykFcly9FnKUonSeO-Xem0rudmgFENCK7lsJRlq6nJXlV7eVUhKx1mo/exec'
+        const form = document.forms['submit_to_google_sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+    
+    </html>
+    
