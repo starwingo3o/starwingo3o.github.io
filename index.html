@@ -58,14 +58,6 @@
     <body onload="ga()">
         <h1>"GA clientId: " <span id="clientId"></span></h1>
     </body>
-    
-    
-    <form name="submit_to_google_sheet">
-        <input name="email" type="email" placeholder="Email" required>
-        <input name="email" type="hidden" value="12211e2">
-        <input name="clientId" type="hidden" value="">
-        <button id="LoginIn" class="form_btn" type="submit">Send</button>
-    </form>
 
     <!-- <p>
     <span class='btn btn-primary'>I'm a span, styled like a button</span>
@@ -79,7 +71,14 @@
     <p>
     <button id="btn_playstation" type="button" class='vote_btn'>vote playstation button</button>
     </p>
-        
+    
+    <h3>Leave your email to stay contact!</h3>
+    <form name="submit_to_google_sheet">
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="email" type="hidden" value="12211e2">
+        <input name="clientId" type="hidden" value="">
+        <button id="LoginIn" class="form_btn" type="submit">Send</button>
+    </form>
 
     <script>
         // const scriptURL = 'https://script.google.com/macros/s/AKfycbzhdAZqQmM9gyZjane5TOjJcaT-H3ZpAUePmHW5V2JzN89CZcM/exec'
@@ -93,7 +92,6 @@
                 .catch(error => console.error('Error!', error.message))
         })
     </script>
-    
     
     </html>
     
