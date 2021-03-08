@@ -231,7 +231,7 @@ p, address {
 }
 
 .parallax-window {
-  min-height: 1000px;
+  min-height: 1000px; /* fixed height same as "tm-header" class (text on top of the scrolling img)*/
   background: transparent;
   position: relative;
 }
@@ -256,6 +256,9 @@ p, address {
   width: 100%;
   color: white;
   z-index: 1000;
+  min-height: 1000px; /* fixed height same as "parallax-window" class (the scrolling img)*/
+  background-color: rgb(0, 0, 0);
+  opacity:0.7;
 }
 
 .tm-header-inner {
