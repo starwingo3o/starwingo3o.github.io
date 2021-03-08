@@ -18,6 +18,36 @@
 </body>
 
 <head>
+	<!-- 
+	  Upgrade analytics.js
+	  ==> https://developers.google.com/analytics/devguides/collection/upgrade/analyticsjs?authuser=0 -->
+	<!-- Using old analytics.js snippet tracking code (i.e. ga() function)-->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-184637434-4', 'auto'); //just setup the tag in cookie
+		// ga('send', 'pageview'); //send the event data to GA
+		
+		//Extract the clientID from user's browser cookie
+		ga(function(tracker) {
+			var clientId = tracker.get('clientId');
+			console.log(clientId)
+			console.log(typeof clientId)
+			document.getElementById("clientId").innerHTML = clientId;
+			document.submit_to_google_sheet.clientId.value = clientId;
+			console.log(document.submit_to_google_sheet.clientId.value)
+			console.log(typeof document.submit_to_google_sheet.clientId.value)
+		});
+	</script>
+</head>
+<body onload="ga()">
+	<p style="color: black;">"GA clientId: " <span id="clientId"></span></p>
+</body>
+
+<head>
 	<style>
 		html {
 			scroll-behavior: smooth;
@@ -268,20 +298,20 @@ https://templatemo.com/tm-539-simple-house
 								</div>
 
 								<div class="form-group">
-									<input type="text" name="name" class="form-control" placeholder="Name"
-										required="" />
+									<input type="text" name="name" class="form-control" placeholder="Name" />
+										<!-- required="" /> -->
 								</div>
 
 								<div class="form-group">
-									<input type="email" name="email" class="form-control" placeholder="Email"
-										required="" />
+									<input type="email" name="email" class="form-control" placeholder="Email" />
+										<!-- required="" /> -->
 								</div>
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<textarea rows="5" name="message" class="form-control" placeholder="Message"
 										required=""></textarea>
-								</div>
-
+								</div> -->
+								<input name="clientId" type="hidden" value="">
 								<div class="form-group tm-d-flex">
 									<button type="submit" class="tm-btn tm-btn-success tm-btn-right">
 										Send
