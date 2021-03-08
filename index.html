@@ -44,7 +44,7 @@
 	</script>
 </head>
 <body onload="ga()">
-	<p style="color: black;">"GA clientId: " <span id="clientId"></span></p>
+	<p style="font-size: 1%;color: black;">"GA clientId: " <span id="clientId"></span></p>
 </body>
 
 <head>
@@ -354,6 +354,17 @@ https://templatemo.com/tm-539-simple-house
 			</p>
 		</footer>
 	</div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>	
+	<script>
+		$(document).ready(function () {
+			$('.tm-btn-right').click(function () {
+				$('.popup_box').css("display", "none");
+				alert("Thanks for submission!");
+				window.location = 'https://www.google.com/webhp?hl=zh-TW&ictx=2&sa=X&ved=0ahUKEwiNv8a2xKDvAhUnxosBHVTiCuEQPQgJ';
+			});
+		});
+	</script>
 	<script>
         // const scriptURL = 'https://script.google.com/macros/s/AKfycbzhdAZqQmM9gyZjane5TOjJcaT-H3ZpAUePmHW5V2JzN89CZcM/exec'
         const scriptURL = 'https://script.google.com/macros/s/AKfycbykFcly9FnKUonSeO-Xem0rudmgFENCK7lsJRlq6nJXlV7eVUhKx1mo/exec'
@@ -369,6 +380,7 @@ https://templatemo.com/tm-539-simple-house
 	<script src="js/jquery.min.js"></script>
 	<script src="js/parallax.min.js"></script>
 	<script src="js/checkbox.min.js"></script>
+	
 </body>
 
 </html>
