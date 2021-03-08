@@ -225,7 +225,8 @@ p, address {
 .placeholder-2 {
   width: 100%;
   min-height: 220px;
-  background-color: #CFBEA5;
+  /* background-color: #CFBEA5; */
+  background-color: transparent;
   position: relative;
   z-index: 998;
 }
