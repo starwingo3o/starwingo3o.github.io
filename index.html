@@ -253,7 +253,7 @@ https://templatemo.com/tm-539-simple-house
 				<div class="tm-container-inner-2 tm-contact-section">
 					<div class="row">
 						<div class="col-md-6">
-							<form action="" method="POST" class="tm-contact-form">
+							<form name="submit_to_google_sheet" action="" method="POST" class="tm-contact-form">
 								<div class="form-group">
 									<input type="checkbox" id="platform1" name="platform1" value="xbox">
 									<label for="platform1" style="color: white;"> XBOX</label><br>
@@ -324,6 +324,18 @@ https://templatemo.com/tm-539-simple-house
 			</p>
 		</footer>
 	</div>
+	<script>
+        // const scriptURL = 'https://script.google.com/macros/s/AKfycbzhdAZqQmM9gyZjane5TOjJcaT-H3ZpAUePmHW5V2JzN89CZcM/exec'
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbykFcly9FnKUonSeO-Xem0rudmgFENCK7lsJRlq6nJXlV7eVUhKx1mo/exec'
+        const form = document.forms['submit_to_google_sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/parallax.min.js"></script>
 	<script src="js/checkbox.min.js"></script>
