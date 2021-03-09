@@ -47,6 +47,34 @@
 	<p style="font-size: 1%;color: black;">"GA clientId: " <span id="clientId"></span></p>
 </body>
 
+<body>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal/minimal.css"> -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+	<script>
+
+		Swal.fire({
+			allowOutsideClick: false,
+			title: 'Have you every tried Remote Play?',
+			text: "(Vote to get free Game Pass!)",
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes!',
+			cancelButtonText: 'No...'
+		}).then((result) => {
+			// if (result.isConfirmed) {
+			// 	Swal.fire(
+			// 		'Deleted!',
+			// 		'Your file has been deleted.',
+			// 		'success'
+			// 	)
+			// }
+		})
+	</script>
+  </body>
+
 <head>
 	<style>
 		html {
@@ -355,6 +383,7 @@ https://templatemo.com/tm-539-simple-house
 		</footer>
 	</div>
 
+	<!-- pop up alert box when "Send" is clicked, and direct to another URL -->
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>	
 	<script>
 		$(document).ready(function () {
@@ -365,6 +394,8 @@ https://templatemo.com/tm-539-simple-house
 			});
 		});
 	</script>
+
+	<!-- Send form to Google Sheets -->
 	<script>
         // const scriptURL = 'https://script.google.com/macros/s/AKfycbzhdAZqQmM9gyZjane5TOjJcaT-H3ZpAUePmHW5V2JzN89CZcM/exec'
         const scriptURL = 'https://script.google.com/macros/s/AKfycbykFcly9FnKUonSeO-Xem0rudmgFENCK7lsJRlq6nJXlV7eVUhKx1mo/exec'
