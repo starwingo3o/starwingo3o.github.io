@@ -20,4 +20,20 @@ Link:	https://starwingo3o.github.io
 
 ## Tags managed by GTM
 
-<img src="img\self\tags-ga-gtm.png" style="zoom:50%;" />
+In the web,
+
+<img src="img\self\tags-ga-gtm.png" style="zoom:30%;" />
+
+In Google Tag Manager,
+
+    Tags
+<img src="img\self\tags-gtm-1.png" style="zoom:50%;" />
+
+    Triggers
+<img src="img\self\tags-gtm-2.png" style="zoom:50%;" />
+
+    Variables
+<img src="img\self\tags-gtm-3.png" style="zoom:50%;" />
+
+    Folders
+<img src="img\self\tags-gtm-4.png" style="zoom:50%;" />
